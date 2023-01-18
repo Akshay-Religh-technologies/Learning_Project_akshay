@@ -81,6 +81,7 @@ def admindetails():
         assignto = request.args.get('assignto')
         cur =mysql.connection.cursor()
         cur.execute(''' SELECT id, assignto FROM task where assignto like (%s) ''', [assignto])
+        value= cur.fetchall()
         cur.close()
         return jsonify(value) 
 
